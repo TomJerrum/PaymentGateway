@@ -1,5 +1,8 @@
 .vs/
 
+PaymentGateway/bin/
+PaymentGateway/obj/
+
 PaymentGateway.Api/bin/
 PaymentGateway.Api/obj/
 PaymentGateway.Api.csproj.user

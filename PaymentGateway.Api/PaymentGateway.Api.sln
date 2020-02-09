@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentGateway.Domain", "Pa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentGateway.EntityFramework", "PaymentGateway.EntityFramework\PaymentGateway.EntityFramework.csproj", "{378F7143-7DB6-41D0-929B-17C1B09C6F02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentGateway", "PaymentGateway\PaymentGateway.csproj", "{64CC2472-D4F1-4B3F-8E78-EDDDEC0A124B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{378F7143-7DB6-41D0-929B-17C1B09C6F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{378F7143-7DB6-41D0-929B-17C1B09C6F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{378F7143-7DB6-41D0-929B-17C1B09C6F02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64CC2472-D4F1-4B3F-8E78-EDDDEC0A124B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64CC2472-D4F1-4B3F-8E78-EDDDEC0A124B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64CC2472-D4F1-4B3F-8E78-EDDDEC0A124B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64CC2472-D4F1-4B3F-8E78-EDDDEC0A124B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

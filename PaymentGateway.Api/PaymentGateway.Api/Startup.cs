@@ -24,6 +24,8 @@ namespace PaymentGateway.Api
 
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlite("Data Source=PaymentGateway.db"));
+
+            IocConfig.IntegrateSimpleInjector(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,12 +36,12 @@ namespace PaymentGateway.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            IocConfig.InitializeContainer();
+
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
+                
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

@@ -11,10 +11,16 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="SimpleInjector.Integration.AspNetCore.Mvc.Core" Version="4.9.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PaymentGateway.EntityFramework\PaymentGateway.EntityFramework.csproj" />
+    <ProjectReference Include="..\PaymentGateway\PaymentGateway.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 
