@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentGateway.Api", "PaymentGateway.Api\PaymentGateway.Api.csproj", "{1FE191EB-6A7E-456C-A79A-2ABE5618D1A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentGateway.Domain", "PaymentGateway.Domain\PaymentGateway.Domain.csproj", "{10851287-15AD-4DAC-AEF5-CBBEBAF3DBFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentGateway.EntityFramework", "PaymentGateway.EntityFramework\PaymentGateway.EntityFramework.csproj", "{378F7143-7DB6-41D0-929B-17C1B09C6F02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{1FE191EB-6A7E-456C-A79A-2ABE5618D1A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FE191EB-6A7E-456C-A79A-2ABE5618D1A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FE191EB-6A7E-456C-A79A-2ABE5618D1A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10851287-15AD-4DAC-AEF5-CBBEBAF3DBFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10851287-15AD-4DAC-AEF5-CBBEBAF3DBFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10851287-15AD-4DAC-AEF5-CBBEBAF3DBFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10851287-15AD-4DAC-AEF5-CBBEBAF3DBFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{378F7143-7DB6-41D0-929B-17C1B09C6F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{378F7143-7DB6-41D0-929B-17C1B09C6F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{378F7143-7DB6-41D0-929B-17C1B09C6F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{378F7143-7DB6-41D0-929B-17C1B09C6F02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

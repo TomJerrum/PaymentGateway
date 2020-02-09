@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PaymentGateway.EntityFramework;
 
 namespace PaymentGateway.Api
 {
@@ -19,6 +21,9 @@ namespace PaymentGateway.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDbContext<DataContext>(options =>
+                options.UseSqlite("Data Source=PaymentGateway.db"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

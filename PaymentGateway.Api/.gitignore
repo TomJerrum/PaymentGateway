@@ -4,3 +4,8 @@ PaymentGateway.Api/bin/
 PaymentGateway.Api/obj/
 PaymentGateway.Api.csproj.user
 
+PaymentGateway.Domain/bin/
+PaymentGateway.Domain/obj/
+
+PaymentGateway.EntityFramework/bin/
+PaymentGateway.EntityFramework/obj/
