@@ -4,9 +4,8 @@ using PaymentGateway.CommandQuery.Queries;
 using PaymentGateway.Mvc.Mappers;
 using PaymentGateway.Mvc.Models;
 using PaymentGateway.Mvc.ViewModelBuilders;
-using PaymentGateway.Mvc.ViewModels;
 using PaymentGateway.Services;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PaymentGateway.Api.Controllers
@@ -21,11 +20,11 @@ namespace PaymentGateway.Api.Controllers
         readonly GetPaymentByIdQuery getPaymentByIdQuery;
         readonly PaymentViewModelBuilder paymentViewModelBuilder;
         readonly GetAllPaymentsQuery getAllPaymentsQuery;
-        
+
         public PaymentController(
-            IBankService bankService, 
-            PaymentMapper paymentMapper, 
-            AddEntityCommand addEntityCommand, 
+            IBankService bankService,
+            PaymentMapper paymentMapper,
+            AddEntityCommand addEntityCommand,
             GetPaymentByIdQuery getPaymentByIdQuery,
             PaymentViewModelBuilder paymentViewModelBuilder,
             GetAllPaymentsQuery getAllPaymentsQuery)
@@ -48,17 +47,31 @@ namespace PaymentGateway.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<PaymentViewModel> Get(string id)
+        public async Task<ActionResult> Get(string id)
         {
             var payment = await getPaymentByIdQuery.ExecuteAsync(id);
-            return paymentViewModelBuilder.Build(payment);
+
+            if (payment == null)
+            {
+                return NotFound();
+            }
+
+            var paymentViewModel = paymentViewModelBuilder.Build(payment);
+            return Ok(paymentViewModel);
         }
 
         [HttpGet]
-        public async Task<List<PaymentViewModel>> Get()
+        public async Task<ActionResult> Get()
         {
             var payments = await getAllPaymentsQuery.ExecuteAsync();
-            return paymentViewModelBuilder.Build(payments);
+
+            if (!payments.Any())
+            {
+                return NotFound();
+            }
+
+            var paymentViewModels = paymentViewModelBuilder.Build(payments);
+            return Ok(paymentViewModels);
         }
     }
 }

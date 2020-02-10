@@ -16,7 +16,7 @@ namespace PaymentGateway.CommandQuery.Queries
 
         public async Task<Payment> ExecuteAsync(string paymentId)
         {
-            return await dataContext.Payments.SingleAsync(p => p.Id == paymentId);
+            return await dataContext.Payments.SingleOrDefaultAsync(p => p.Id == paymentId);
         }
     }
 }

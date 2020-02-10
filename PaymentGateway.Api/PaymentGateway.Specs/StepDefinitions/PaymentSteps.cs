@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PaymentGateway.Api.Controllers;
 using PaymentGateway.Domain;
@@ -20,8 +21,7 @@ namespace PaymentGateway.Specs.StepDefinitions
     public class PaymentSteps : Steps
     {
         string returnedPaymentId;
-        PaymentViewModel returnedPaymentViewModel;
-        List<PaymentViewModel> returnedPaymentViewModels;
+        ActionResult returnedActionResult;
 
         readonly TestBankService bankService;
         readonly PaymentController paymentController;
@@ -60,7 +60,7 @@ namespace PaymentGateway.Specs.StepDefinitions
                     Currency = paymentDto.Currency,
                     CVV = paymentDto.CVV,
                     ExpiryDate = paymentDto.ExpiryDate,
-                    ProcessedDate = paymentDto.ProcessedDate,
+                    ProcessedDate = paymentDto.ProcessedDate, 
                     Status = paymentDto.Status
                 };
 
@@ -86,15 +86,15 @@ namespace PaymentGateway.Specs.StepDefinitions
         [When(@"I get the payment with the id '(.*)'")]
         public async Task WhenIGetThePaymentWithTheId(string paymentId)
         {
-            returnedPaymentViewModel = await paymentController.Get(paymentId);
+            returnedActionResult = await paymentController.Get(paymentId);
         }
 
         [When(@"I get all payments")]
         public async Task WhenIGetAllPayments()
         {
-            returnedPaymentViewModels = await paymentController.Get();
+            returnedActionResult = await paymentController.Get();
         }
-
+        
         [Then(@"the payment id '(.*)' is returned")]
         public void ThenThePaymentIdIsReturned(string expectedPaymentId)
         {
@@ -124,12 +124,23 @@ namespace PaymentGateway.Specs.StepDefinitions
         [Then(@"the payment view model with the following details is returned")]
         public void ThenThePaymentViewModelWithTheFollowingDetailsIsReturned(PaymentViewModelDto expectedPaymentViewModel)
         {
-            AssertPaymentViewModelIsCorrect(returnedPaymentViewModel, expectedPaymentViewModel);
+            returnedActionResult.Should().BeOfType<OkObjectResult>();
+
+            var actionResultValue = (returnedActionResult as OkObjectResult).Value;
+            actionResultValue.Should().BeOfType<PaymentViewModel>();
+
+            AssertPaymentViewModelIsCorrect(actionResultValue as PaymentViewModel, expectedPaymentViewModel);
         }
 
         [Then(@"the payment view models with the following details are returned")]
         public void ThenThePaymentViewModelsWithTheFollowingDetailsAreReturned(IEnumerable<PaymentViewModelDto> expectedPaymentViewModels)
         {
+            returnedActionResult.Should().BeOfType<OkObjectResult>();
+
+            var actionResultValue = (returnedActionResult as OkObjectResult).Value;
+            actionResultValue.Should().BeOfType<List<PaymentViewModel>>();
+
+            var returnedPaymentViewModels = actionResultValue as List<PaymentViewModel>;
             returnedPaymentViewModels.Should().HaveCount(expectedPaymentViewModels.Count());
 
             foreach (var expectedPaymentViewModel in expectedPaymentViewModels)
@@ -137,6 +148,12 @@ namespace PaymentGateway.Specs.StepDefinitions
                 var returnedViewModel = returnedPaymentViewModels.SingleOrDefault(pvm => pvm.Id == expectedPaymentViewModel.Id);
                 AssertPaymentViewModelIsCorrect(returnedViewModel, expectedPaymentViewModel);
             }
+        }
+
+        [Then(@"the NotFound HTTP status code is returned")]
+        public void ThenTheNotFoundHTTPStatusCodeIsReturned()
+        {
+            returnedActionResult.Should().BeOfType<NotFoundResult>();
         }
 
         void AssertPaymentViewModelIsCorrect(PaymentViewModel paymentViewModel, PaymentViewModelDto expectedPaymentViewModel)
