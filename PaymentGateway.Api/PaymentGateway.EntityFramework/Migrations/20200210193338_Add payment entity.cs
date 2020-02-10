@@ -18,8 +18,7 @@ namespace PaymentGateway.EntityFramework.Migrations
                     ExpiryDate = table.Column<DateTime>(nullable: false),
                     Amount = table.Column<decimal>(nullable: false),
                     Currency = table.Column<string>(nullable: true),
-                    CVV = table.Column<string>(nullable: true),
-                    RequestedDate = table.Column<DateTime>(nullable: false)
+                    CVV = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

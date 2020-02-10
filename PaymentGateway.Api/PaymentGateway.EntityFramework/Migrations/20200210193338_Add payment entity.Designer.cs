@@ -9,7 +9,7 @@ using PaymentGateway.EntityFramework;
 namespace PaymentGateway.EntityFramework.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200209215951_Add payment entity")]
+    [Migration("20200210193338_Add payment entity")]
     partial class Addpaymententity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,9 +39,6 @@ namespace PaymentGateway.EntityFramework.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("ProcessedDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("RequestedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Status")

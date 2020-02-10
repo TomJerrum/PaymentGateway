@@ -15,12 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PaymentGateway.CommandQuery\PaymentGateway.CommandQuery.csproj" />
     <ProjectReference Include="..\PaymentGateway.EntityFramework\PaymentGateway.EntityFramework.csproj" />
+    <ProjectReference Include="..\PaymentGateway.Mvc\PaymentGateway.Mvc.csproj" />
+    <ProjectReference Include="..\PaymentGateway.Services\PaymentGateway.Services.csproj" />
     <ProjectReference Include="..\PaymentGateway\PaymentGateway.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.DependencyInjection;
+using PaymentGateway.Services;
 using SimpleInjector;
 using SimpleInjector.Integration.AspNetCore.Mvc;
 using SimpleInjector.Lifestyles;
@@ -24,6 +25,7 @@ namespace PaymentGateway.Api
         public static void InitializeContainer()
         {
             var container = ApplicationContext.Container;
+            container.Register<IBankService, FakeBankService>();
             container.Verify();
         }
     }

@@ -39,9 +39,6 @@ namespace PaymentGateway.EntityFramework.Migrations
                     b.Property<DateTime>("ProcessedDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("RequestedDate")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("Status")
                         .HasColumnType("INTEGER");
 
