@@ -1,9 +1,11 @@
 ﻿using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using PaymentGateway.Api.Controllers;
+using PaymentGateway.Domain;
 using PaymentGateway.EntityFramework;
 using PaymentGateway.Mvc;
 using PaymentGateway.Mvc.Models;
+using PaymentGateway.Mvc.ViewModels;
 using PaymentGateway.Services;
 using PaymentGateway.Specs.Fakes;
 using PaymentGateway.Specs.Transforms;
@@ -18,6 +20,7 @@ namespace PaymentGateway.Specs.StepDefinitions
     public class PaymentSteps : Steps
     {
         string returnedPaymentId;
+        PaymentViewModel returnedPaymentViewModel;
 
         readonly TestBankService bankService;
         readonly PaymentController paymentController;
@@ -43,6 +46,27 @@ namespace PaymentGateway.Specs.StepDefinitions
             bankService.SetBankResponse(bankResponse);
         }
 
+        [Given(@"I have the following payments stored")]
+        public async Task GivenIHaveTheFollowingPaymentsStored(IEnumerable<PaymentDto> paymentDtos)
+        {
+            foreach (var paymentDto in paymentDtos)
+            {
+                var payment = new Payment
+                {
+                    Id = paymentDto.Id,
+                    Amount = paymentDto.Amount,
+                    CardNumber = paymentDto.CardNumber,
+                    Currency = paymentDto.Currency,
+                    CVV = paymentDto.CVV,
+                    ExpiryDate = paymentDto.ExpiryDate,
+                    ProcessedDate = paymentDto.ProcessedDate, 
+                    Status = paymentDto.Status
+                };
+
+                await dataContext.Payments.AddAsync(payment);
+            }
+        }
+
         [When(@"I submit the following payment")]
         public async Task WhenISubmitTheFollowingPayment(PaymentModelDto paymentModelDto)
         {
@@ -56,6 +80,12 @@ namespace PaymentGateway.Specs.StepDefinitions
             };
 
             returnedPaymentId = await paymentController.Post(model);
+        }
+
+        [When(@"I get the payment with the id '(.*)'")]
+        public async Task WhenIGetThePaymentWithTheId(string paymentId)
+        {
+            returnedPaymentViewModel = await paymentController.Get(paymentId);
         }
 
         [Then(@"the payment id '(.*)' is returned")]
@@ -82,6 +112,19 @@ namespace PaymentGateway.Specs.StepDefinitions
                     p.Currency == expectedPayment.Currency &&
                     p.CVV == expectedPayment.CVV);
             }
+        }
+
+        [Then(@"the payment view model with the following details is returned")]
+        public void ThenThePaymentViewModelWithTheFollowingDetailsIsReturned(PaymentViewModelDto expectedPaymentViewModel)
+        {
+            returnedPaymentViewModel.Id.Should().Be(expectedPaymentViewModel.Id);
+            returnedPaymentViewModel.Amount.Should().Be(expectedPaymentViewModel.Amount);
+            returnedPaymentViewModel.CardNumber.Should().Be(expectedPaymentViewModel.CardNumber);
+            returnedPaymentViewModel.Currency.Should().Be(expectedPaymentViewModel.Currency);
+            returnedPaymentViewModel.CVV.Should().Be(expectedPaymentViewModel.CVV);
+            returnedPaymentViewModel.ExpiryDate.Should().Be(expectedPaymentViewModel.ExpiryDate);
+            returnedPaymentViewModel.ProcessedDate.Should().Be(expectedPaymentViewModel.ProcessedDate);
+            returnedPaymentViewModel.Status.Should().Be(expectedPaymentViewModel.Status);
         }
     }
 }
