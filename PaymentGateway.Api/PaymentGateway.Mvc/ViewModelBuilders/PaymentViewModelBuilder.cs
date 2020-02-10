@@ -1,5 +1,7 @@
 ﻿using PaymentGateway.Domain;
 using PaymentGateway.Mvc.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PaymentGateway.Mvc.ViewModelBuilders
 {
@@ -18,6 +20,11 @@ namespace PaymentGateway.Mvc.ViewModelBuilders
                 ProcessedDate = payment.ProcessedDate,
                 Status = payment.Status.ToString()
             };
+        }
+
+        public List<PaymentViewModel> Build(List<Payment> payments)
+        {
+            return payments.Select(Build).ToList();
         }
     }
 }

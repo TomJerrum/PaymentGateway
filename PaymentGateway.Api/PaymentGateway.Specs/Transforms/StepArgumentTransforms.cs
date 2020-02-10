@@ -30,5 +30,11 @@ namespace PaymentGateway.Specs.Transforms
         {
             return table.CreateInstance<PaymentViewModelDto>();
         }
+
+        [StepArgumentTransformation]
+        public IEnumerable<PaymentViewModelDto> PaymentViewModelDtosTransform(Table table)
+        {
+            return table.CreateSet<PaymentViewModelDto>();
+        }
     }
 }

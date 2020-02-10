@@ -6,6 +6,7 @@ using PaymentGateway.Mvc.Models;
 using PaymentGateway.Mvc.ViewModelBuilders;
 using PaymentGateway.Mvc.ViewModels;
 using PaymentGateway.Services;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PaymentGateway.Api.Controllers
@@ -19,19 +20,22 @@ namespace PaymentGateway.Api.Controllers
         readonly AddEntityCommand addEntityCommand;
         readonly GetPaymentByIdQuery getPaymentByIdQuery;
         readonly PaymentViewModelBuilder paymentViewModelBuilder;
-
+        readonly GetAllPaymentsQuery getAllPaymentsQuery;
+        
         public PaymentController(
             IBankService bankService, 
             PaymentMapper paymentMapper, 
             AddEntityCommand addEntityCommand, 
             GetPaymentByIdQuery getPaymentByIdQuery,
-            PaymentViewModelBuilder paymentViewModelBuilder)
+            PaymentViewModelBuilder paymentViewModelBuilder,
+            GetAllPaymentsQuery getAllPaymentsQuery)
         {
             this.bankService = bankService;
             this.paymentMapper = paymentMapper;
             this.addEntityCommand = addEntityCommand;
             this.getPaymentByIdQuery = getPaymentByIdQuery;
             this.paymentViewModelBuilder = paymentViewModelBuilder;
+            this.getAllPaymentsQuery = getAllPaymentsQuery;
         }
 
         [HttpPost]
@@ -48,6 +52,13 @@ namespace PaymentGateway.Api.Controllers
         {
             var payment = await getPaymentByIdQuery.ExecuteAsync(id);
             return paymentViewModelBuilder.Build(payment);
+        }
+
+        [HttpGet]
+        public async Task<List<PaymentViewModel>> Get()
+        {
+            var payments = await getAllPaymentsQuery.ExecuteAsync();
+            return paymentViewModelBuilder.Build(payments);
         }
     }
 }

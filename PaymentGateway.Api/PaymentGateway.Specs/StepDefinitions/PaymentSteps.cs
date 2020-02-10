@@ -21,6 +21,7 @@ namespace PaymentGateway.Specs.StepDefinitions
     {
         string returnedPaymentId;
         PaymentViewModel returnedPaymentViewModel;
+        List<PaymentViewModel> returnedPaymentViewModels;
 
         readonly TestBankService bankService;
         readonly PaymentController paymentController;
@@ -59,7 +60,7 @@ namespace PaymentGateway.Specs.StepDefinitions
                     Currency = paymentDto.Currency,
                     CVV = paymentDto.CVV,
                     ExpiryDate = paymentDto.ExpiryDate,
-                    ProcessedDate = paymentDto.ProcessedDate, 
+                    ProcessedDate = paymentDto.ProcessedDate,
                     Status = paymentDto.Status
                 };
 
@@ -86,6 +87,12 @@ namespace PaymentGateway.Specs.StepDefinitions
         public async Task WhenIGetThePaymentWithTheId(string paymentId)
         {
             returnedPaymentViewModel = await paymentController.Get(paymentId);
+        }
+
+        [When(@"I get all payments")]
+        public async Task WhenIGetAllPayments()
+        {
+            returnedPaymentViewModels = await paymentController.Get();
         }
 
         [Then(@"the payment id '(.*)' is returned")]
@@ -117,14 +124,31 @@ namespace PaymentGateway.Specs.StepDefinitions
         [Then(@"the payment view model with the following details is returned")]
         public void ThenThePaymentViewModelWithTheFollowingDetailsIsReturned(PaymentViewModelDto expectedPaymentViewModel)
         {
-            returnedPaymentViewModel.Id.Should().Be(expectedPaymentViewModel.Id);
-            returnedPaymentViewModel.Amount.Should().Be(expectedPaymentViewModel.Amount);
-            returnedPaymentViewModel.CardNumber.Should().Be(expectedPaymentViewModel.CardNumber);
-            returnedPaymentViewModel.Currency.Should().Be(expectedPaymentViewModel.Currency);
-            returnedPaymentViewModel.CVV.Should().Be(expectedPaymentViewModel.CVV);
-            returnedPaymentViewModel.ExpiryDate.Should().Be(expectedPaymentViewModel.ExpiryDate);
-            returnedPaymentViewModel.ProcessedDate.Should().Be(expectedPaymentViewModel.ProcessedDate);
-            returnedPaymentViewModel.Status.Should().Be(expectedPaymentViewModel.Status);
+            AssertPaymentViewModelIsCorrect(returnedPaymentViewModel, expectedPaymentViewModel);
+        }
+
+        [Then(@"the payment view models with the following details are returned")]
+        public void ThenThePaymentViewModelsWithTheFollowingDetailsAreReturned(IEnumerable<PaymentViewModelDto> expectedPaymentViewModels)
+        {
+            returnedPaymentViewModels.Should().HaveCount(expectedPaymentViewModels.Count());
+
+            foreach (var expectedPaymentViewModel in expectedPaymentViewModels)
+            {
+                var returnedViewModel = returnedPaymentViewModels.SingleOrDefault(pvm => pvm.Id == expectedPaymentViewModel.Id);
+                AssertPaymentViewModelIsCorrect(returnedViewModel, expectedPaymentViewModel);
+            }
+        }
+
+        void AssertPaymentViewModelIsCorrect(PaymentViewModel paymentViewModel, PaymentViewModelDto expectedPaymentViewModel)
+        {
+            paymentViewModel.Id.Should().Be(expectedPaymentViewModel.Id);
+            paymentViewModel.Amount.Should().Be(expectedPaymentViewModel.Amount);
+            paymentViewModel.CardNumber.Should().Be(expectedPaymentViewModel.CardNumber);
+            paymentViewModel.Currency.Should().Be(expectedPaymentViewModel.Currency);
+            paymentViewModel.CVV.Should().Be(expectedPaymentViewModel.CVV);
+            paymentViewModel.ExpiryDate.Should().Be(expectedPaymentViewModel.ExpiryDate);
+            paymentViewModel.ProcessedDate.Should().Be(expectedPaymentViewModel.ProcessedDate);
+            paymentViewModel.Status.Should().Be(expectedPaymentViewModel.Status);
         }
     }
 }

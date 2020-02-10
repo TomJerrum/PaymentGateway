@@ -99,36 +99,36 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                             "PaymentId",
                             "PaymentStatus",
                             "ProcessedDate"});
-                table3.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "1aa23b",
                             "Successful",
                             "10-Feb-2020 21:00"});
 #line 4
- testRunner.Given("I receive the following response from the bank service", ((string)(null)), table3, "Given ");
+ testRunner.Given("I receive the following response from the bank service", ((string)(null)), table4, "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                             "CardNumber",
                             "ExpiryDate",
                             "Amount",
                             "Currency",
                             "CVV"});
-                table4.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "12345678",
                             "01-Aug-2020",
                             "100.00",
                             "GBP",
                             "123"});
 #line 7
- testRunner.When("I submit the following payment", ((string)(null)), table4, "When ");
+ testRunner.When("I submit the following payment", ((string)(null)), table5, "When ");
 #line hidden
 #line 10
  testRunner.Then("the payment id \'1aa23b\' is returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Status",
                             "ProcessedDate",
@@ -137,7 +137,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "Amount",
                             "Currency",
                             "CVV"});
-                table5.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "1aa23b",
                             "Successful",
                             "10-Feb-2020 21:00",
@@ -147,7 +147,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "GBP",
                             "123"});
 #line 11
- testRunner.And("the following payments are stored", ((string)(null)), table5, "And ");
+ testRunner.And("the following payments are stored", ((string)(null)), table6, "And ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -179,36 +179,36 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                             "PaymentId",
                             "PaymentStatus",
                             "ProcessedDate"});
-                table6.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "1aa23b",
                             "Unsuccessful",
                             "10-Feb-2020 21:00"});
 #line 16
- testRunner.Given("I receive the following response from the bank service", ((string)(null)), table6, "Given ");
+ testRunner.Given("I receive the following response from the bank service", ((string)(null)), table7, "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                             "CardNumber",
                             "ExpiryDate",
                             "Amount",
                             "Currency",
                             "CVV"});
-                table7.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "12345678",
                             "01-Aug-2020",
                             "100.00",
                             "GBP",
                             "123"});
 #line 19
- testRunner.When("I submit the following payment", ((string)(null)), table7, "When ");
+ testRunner.When("I submit the following payment", ((string)(null)), table8, "When ");
 #line hidden
 #line 22
  testRunner.Then("the payment id \'1aa23b\' is returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Status",
                             "ProcessedDate",
@@ -217,7 +217,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "Amount",
                             "Currency",
                             "CVV"});
-                table8.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "1aa23b",
                             "Unsuccessful",
                             "10-Feb-2020 21:00",
@@ -227,7 +227,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "GBP",
                             "123"});
 #line 23
- testRunner.And("the following payments are stored", ((string)(null)), table8, "And ");
+ testRunner.And("the following payments are stored", ((string)(null)), table9, "And ");
 #line hidden
             }
             this.ScenarioCleanup();
