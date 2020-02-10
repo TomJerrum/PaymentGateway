@@ -5,7 +5,7 @@ namespace PaymentGateway.Mvc.Mappers
 {
     public class PaymentMapper
     {
-        public Payment Map(PaymentModel model, BankResponseDto bankResponse)
+        public Payment Map(PaymentModel model, BankResponse bankResponse)
         {
             return new Payment 
             {

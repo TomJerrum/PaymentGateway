@@ -21,3 +21,6 @@ PaymentGateway.Mvc/obj/
 
 PaymentGateway.Services/bin/
 PaymentGateway.Services/obj/
+
+PaymentGateway.Specs/bin/
+PaymentGateway.Specs/obj/

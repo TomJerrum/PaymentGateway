@@ -5,6 +5,6 @@ namespace PaymentGateway.Services
 {
     public interface IBankService
     {
-        BankResponseDto SubmitPayment(PaymentModel model);
+        BankResponse SubmitPayment(PaymentModel model);
     }
 }

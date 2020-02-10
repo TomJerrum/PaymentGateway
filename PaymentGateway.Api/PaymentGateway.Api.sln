@@ -11,11 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway.EntityFramew
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway", "PaymentGateway\PaymentGateway.csproj", "{64CC2472-D4F1-4B3F-8E78-EDDDEC0A124B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentGateway.Mvc", "PaymentGateway.Mvc\PaymentGateway.Mvc.csproj", "{40101BCA-E836-4A9A-BFE6-4B40D0B7065D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway.Mvc", "PaymentGateway.Mvc\PaymentGateway.Mvc.csproj", "{40101BCA-E836-4A9A-BFE6-4B40D0B7065D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentGateway.Services", "PaymentGateway.Services\PaymentGateway.Services.csproj", "{F9DACA87-8D8C-40AA-AA2D-6DB5845B8D88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway.Services", "PaymentGateway.Services\PaymentGateway.Services.csproj", "{F9DACA87-8D8C-40AA-AA2D-6DB5845B8D88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentGateway.CommandQuery", "PaymentGateway.CommandQuery\PaymentGateway.CommandQuery.csproj", "{1D638C2C-1A09-4464-A327-A446F2660676}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway.CommandQuery", "PaymentGateway.CommandQuery\PaymentGateway.CommandQuery.csproj", "{1D638C2C-1A09-4464-A327-A446F2660676}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentGateway.Specs", "PaymentGateway.Specs\PaymentGateway.Specs.csproj", "{B24221B6-39E9-4D9E-B100-4B1584C0C62E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{1D638C2C-1A09-4464-A327-A446F2660676}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D638C2C-1A09-4464-A327-A446F2660676}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D638C2C-1A09-4464-A327-A446F2660676}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B24221B6-39E9-4D9E-B100-4B1584C0C62E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B24221B6-39E9-4D9E-B100-4B1584C0C62E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B24221B6-39E9-4D9E-B100-4B1584C0C62E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B24221B6-39E9-4D9E-B100-4B1584C0C62E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

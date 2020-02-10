@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace PaymentGateway.Mvc.Models
+namespace PaymentGateway.Specs.Transforms
 {
-    public class PaymentModel
+    public class PaymentModelDto
     {
         public string CardNumber { get; set; }
         public DateTime ExpiryDate { get; set; }

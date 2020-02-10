@@ -1,7 +1,7 @@
 ﻿using PaymentGateway.Domain.Enums;
 using System;
 
-namespace PaymentGateway.Mvc
+namespace PaymentGateway.Specs.Transforms
 {
     public class BankResponseDto
     {

@@ -7,9 +7,9 @@ namespace PaymentGateway.Services
 {
     public class FakeBankService : IBankService
     {
-        public BankResponseDto SubmitPayment(PaymentModel model)
+        public BankResponse SubmitPayment(PaymentModel model)
         {
-            return new BankResponseDto
+            return new BankResponse
             {
                 PaymentId = Guid.NewGuid().ToString(),
                 PaymentStatus = PaymentStatus.Successful,
