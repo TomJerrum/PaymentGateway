@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Payment } from '../models/payment';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,15 +7,11 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './all-payments.component.html',
   styleUrls: []
 })
-export class AllPaymentsComponent implements OnInit {
+export class AllPaymentsComponent{
 
   payments: Payment[] = [];
 
   constructor(private http: HttpClient) { }
-
-  async ngOnInit() {
-    this.getPayments();
-  }
 
   getPayments() {
     this.http.get<Payment[]>('https://localhost:5001/api/payment')
@@ -23,5 +19,9 @@ export class AllPaymentsComponent implements OnInit {
         data => this.payments = data,
         error => this.payments = []
       );
+  }
+
+  clear() {
+    this.payments = [];
   }
 }

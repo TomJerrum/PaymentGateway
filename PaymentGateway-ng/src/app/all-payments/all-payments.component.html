@@ -1,8 +1,38 @@
-<div class="card p-3">
-    <h5 class="card-title">All payments</h5>
-    <div *ngFor="let payment of payments">
-        {{payment.id}}
-    </div>
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex flex-row">
+            <h5 class="card-title">View all payments</h5>
+            <div class="ml-auto">
+                <button class="btn btn-primary btn-sm" (click)="getPayments()">Get payments</button>
+                <button class="btn btn-danger btn-sm ml-1" (click)="clear()">Clear</button>
+            </div>
+        </div>
 
-    <h1 *ngIf="!payments.length">No payments found</h1>
+        <p *ngIf="!payments.length" class="text-center font-weight-bold">No payments to display</p>
+
+        <table class="table">
+            <thead>
+                <th>Id</th>
+                <th>Status</th>
+                <th>Processed date</th>
+                <th>Card number</th>
+                <th>Expiry date</th>
+                <th>Amount</th>
+                <th>Currency</th>
+                <th>CVV</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let payment of payments">
+                    <td>{{payment.id}}</td>
+                    <td>{{payment.status}}</td>
+                    <td>{{payment.processedDate}}</td>
+                    <td>{{payment.cardNumber}}</td>
+                    <td>{{payment.expiryDate}}</td>
+                    <td>{{payment.amount}}</td>
+                    <td>{{payment.currency}}</td>
+                    <td>{{payment.cvv}}</td>
+                </tr> 
+            </tbody>
+        </table>
+    </div>
 </div>

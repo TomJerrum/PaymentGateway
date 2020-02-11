@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Log } from '../models/log';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,13 +7,10 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './all-logs.component.html',
   styleUrls: []
 })
-export class AllLogsComponent implements OnInit {
+export class AllLogsComponent {
   logs: Log[] = [];
   
   constructor(private http: HttpClient) { }
-
-  ngOnInit() {
-  }
 
   getLogs() {
     this.http.get<Log[]>('https://localhost:5001/api/log')
