@@ -12,9 +12,22 @@ namespace PaymentGateway.Services
             return new BankResponse
             {
                 PaymentId = Guid.NewGuid().ToString(),
-                PaymentStatus = PaymentStatus.Successful,
+                PaymentStatus = GenerateRandomStatus(),
                 ProcessedDate = DateTime.Now
             };
+        }
+
+        PaymentStatus GenerateRandomStatus()
+        {
+            Random rnd = new Random();
+            if (rnd.Next(0, 2) == 1)
+            {
+                return PaymentStatus.Successful;
+            }
+            else
+            {
+                return PaymentStatus.Unsuccessful;
+            }
         }
     }
 }
