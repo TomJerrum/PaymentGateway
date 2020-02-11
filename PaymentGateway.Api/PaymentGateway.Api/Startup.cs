@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PaymentGateway.Api.Attributes;
 using PaymentGateway.EntityFramework;
 
 namespace PaymentGateway.Api
@@ -22,8 +23,23 @@ namespace PaymentGateway.Api
         {
             services.AddControllers();
 
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(typeof(UnitOfWorkAttribute));
+                options.Filters.Add(typeof(CustomRequestLoggingAttribute));
+            });
+
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlite("Data Source=PaymentGateway.db"));
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin();
+                    });
+            });
 
             IocConfig.IntegrateSimpleInjector(services);
         }
@@ -40,6 +56,7 @@ namespace PaymentGateway.Api
 
             app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {

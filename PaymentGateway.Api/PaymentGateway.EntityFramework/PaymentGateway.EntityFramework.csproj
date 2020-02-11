@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200211112551_Add logs table.cs" />
+    <Compile Remove="Migrations\20200211112551_Add logs table.Designer.cs" />
+    <Compile Remove="Migrations\20200211114704_Add logs table.cs" />
+    <Compile Remove="Migrations\20200211114704_Add logs table.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.1">
       <PrivateAssets>all</PrivateAssets>

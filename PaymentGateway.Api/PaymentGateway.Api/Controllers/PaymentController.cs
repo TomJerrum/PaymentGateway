@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace PaymentGateway.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class PaymentController : ControllerBase
     {
         readonly IBankService bankService;

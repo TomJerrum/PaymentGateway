@@ -9,5 +9,6 @@ namespace PaymentGateway.EntityFramework
         { }
 
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<Log> Logs { get; set; }
     }
 }
