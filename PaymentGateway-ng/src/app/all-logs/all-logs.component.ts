@@ -13,7 +13,7 @@ export class AllLogsComponent {
   constructor(private http: HttpClient) { }
 
   getLogs() {
-    this.http.get<Log[]>('https://localhost:5001/api/log')
+    this.http.get<Log[]>('http://localhost:5000/api/log')
       .subscribe(
         data => this.logs = data,
         error => this.logs = []

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PaymentModel } from '../models/paymentModel';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'payment-form',
@@ -13,6 +13,6 @@ export class PaymentFormComponent {
   constructor(private http: HttpClient) { }
 
   submitPayment() {
-    this.http.post('https://localhost:5001/api/payment', this.model).subscribe(data => {}, error => {});
+    this.http.post('http://localhost:5000/api/payment', this.model).subscribe(data => {}, error => {});
   }
 }

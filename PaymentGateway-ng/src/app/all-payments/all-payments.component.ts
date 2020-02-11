@@ -14,7 +14,7 @@ export class AllPaymentsComponent{
   constructor(private http: HttpClient) { }
 
   getPayments() {
-    this.http.get<Payment[]>('https://localhost:5001/api/payment')
+    this.http.get<Payment[]>('http://localhost:5000/api/payment')
       .subscribe(
         data => this.payments = data,
         error => this.payments = []

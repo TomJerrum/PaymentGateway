@@ -10,29 +10,31 @@
 
         <p *ngIf="!payments.length" class="text-center font-weight-bold">No payments to display</p>
 
-        <table class="table">
-            <thead>
-                <th>Id</th>
-                <th>Status</th>
-                <th>Processed date</th>
-                <th>Card number</th>
-                <th>Expiry date</th>
-                <th>Amount</th>
-                <th>Currency</th>
-                <th>CVV</th>
-            </thead>
-            <tbody>
-                <tr *ngFor="let payment of payments">
-                    <td>{{payment.id}}</td>
-                    <td>{{payment.status}}</td>
-                    <td>{{payment.processedDate}}</td>
-                    <td>{{payment.cardNumber}}</td>
-                    <td>{{payment.expiryDate}}</td>
-                    <td>{{payment.amount}}</td>
-                    <td>{{payment.currency}}</td>
-                    <td>{{payment.cvv}}</td>
-                </tr> 
-            </tbody>
-        </table>
+        <div *ngIf="payments.length > 0">
+            <table class="table" >
+                <thead>
+                    <th>Id</th>
+                    <th>Status</th>
+                    <th>Processed date</th>
+                    <th>Card number</th>
+                    <th>Expiry date</th>
+                    <th>Amount</th>
+                    <th>Currency</th>
+                    <th>CVV</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let payment of payments">
+                        <td>{{payment.id}}</td>
+                        <td>{{payment.status}}</td>
+                        <td>{{payment.processedDate}}</td>
+                        <td>{{payment.cardNumber}}</td>
+                        <td>{{payment.expiryDate}}</td>
+                        <td>{{payment.amount}}</td>
+                        <td>{{payment.currency}}</td>
+                        <td>{{payment.cvv}}</td>
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

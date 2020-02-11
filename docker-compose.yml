@@ -1,0 +1,14 @@
+version: "3.5"
+
+services:
+    app:
+        image: 'payment-gateway-app'
+        build: './PaymentGateway-ng'
+        ports:
+            - 3000:80
+
+    webApi: 
+        image: 'payment-gateway-api'
+        build: './PaymentGateway.Api'
+        ports:
+            - 5000:80
