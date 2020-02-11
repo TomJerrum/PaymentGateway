@@ -75,107 +75,14 @@ namespace PaymentGateway.Specs.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("I can get a payment by its Id")]
-        [NUnit.Framework.TestCaseAttribute("3cc45d", "Successful", "09-Feb-2020 05:45", "12341234", "31-Jan-2021", "1250.00", "USD", "789", null)]
-        [NUnit.Framework.TestCaseAttribute("1aa23b", "Unsuccessful", "10-Feb-2020 21:00", "12345678", "01-Aug-2020", "100.00", "GBP", "123", null)]
-        [NUnit.Framework.TestCaseAttribute("2bb34c", "Successful", "10-Feb-2020 21:30", "87354321", "31-Feb-2020", "2500.00", "EUR", "456", null)]
+        [NUnit.Framework.TestCaseAttribute("3cc45d", "Successful", "09-Feb-2020 05:45", "****1234", "31-Jan-2021", "1250.00", "USD", "789", null)]
+        [NUnit.Framework.TestCaseAttribute("1aa23b", "Unsuccessful", "10-Feb-2020 21:00", "****5678", "01-Aug-2020", "100.00", "GBP", "123", null)]
+        [NUnit.Framework.TestCaseAttribute("2bb34c", "Successful", "10-Feb-2020 21:30", "****4321", "31-Feb-2020", "2500.00", "EUR", "456", null)]
         public virtual void ICanGetAPaymentByItsId(string paymentId, string status, string processedDate, string cardNumber, string expiryDate, string amount, string currency, string cVV, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("I can get a payment by its Id", null, exampleTags);
 #line 3
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Id",
-                            "Status",
-                            "ProcessedDate",
-                            "CardNumber",
-                            "ExpiryDate",
-                            "Amount",
-                            "Currency",
-                            "CVV"});
-                table1.AddRow(new string[] {
-                            "1aa23b",
-                            "Unsuccessful",
-                            "10-Feb-2020 21:00",
-                            "12345678",
-                            "01-Aug-2020",
-                            "100.00",
-                            "GBP",
-                            "123"});
-                table1.AddRow(new string[] {
-                            "2bb34c",
-                            "Successful",
-                            "10-Feb-2020 21:30",
-                            "87354321",
-                            "31-Feb-2020",
-                            "2500.00",
-                            "EUR",
-                            "456"});
-                table1.AddRow(new string[] {
-                            "3cc45d",
-                            "Successful",
-                            "09-Feb-2020 05:45",
-                            "12341234",
-                            "31-Jan-2021",
-                            "1250.00",
-                            "USD",
-                            "789"});
-#line 4
- testRunner.Given("I have the following payments stored", ((string)(null)), table1, "Given ");
-#line hidden
-#line 9
- testRunner.When(string.Format("I get the payment with the id \'{0}\'", paymentId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Id",
-                            "Status",
-                            "ProcessedDate",
-                            "CardNumber",
-                            "ExpiryDate",
-                            "Amount",
-                            "Currency",
-                            "CVV"});
-                table2.AddRow(new string[] {
-                            string.Format("{0}", paymentId),
-                            string.Format("{0}", status),
-                            string.Format("{0}", processedDate),
-                            string.Format("{0}", cardNumber),
-                            string.Format("{0}", expiryDate),
-                            string.Format("{0}", amount),
-                            string.Format("{0}", currency),
-                            string.Format("{0}", cVV)});
-#line 10
- testRunner.Then("the payment view model with the following details is returned", ((string)(null)), table2, "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("I can try to get a payment that doesn\'t exist")]
-        public virtual void ICanTryToGetAPaymentThatDoesntExist()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("I can try to get a payment that doesn\'t exist", null, ((string[])(null)));
-#line 20
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -231,8 +138,101 @@ this.ScenarioInitialize(scenarioInfo);
                             "1250.00",
                             "USD",
                             "789"});
-#line 21
+#line 4
  testRunner.Given("I have the following payments stored", ((string)(null)), table3, "Given ");
+#line hidden
+#line 9
+ testRunner.When(string.Format("I get the payment with the id \'{0}\'", paymentId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Id",
+                            "Status",
+                            "ProcessedDate",
+                            "CardNumber",
+                            "ExpiryDate",
+                            "Amount",
+                            "Currency",
+                            "CVV"});
+                table4.AddRow(new string[] {
+                            string.Format("{0}", paymentId),
+                            string.Format("{0}", status),
+                            string.Format("{0}", processedDate),
+                            string.Format("{0}", cardNumber),
+                            string.Format("{0}", expiryDate),
+                            string.Format("{0}", amount),
+                            string.Format("{0}", currency),
+                            string.Format("{0}", cVV)});
+#line 10
+ testRunner.Then("the payment view model with the following details is returned", ((string)(null)), table4, "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("I can try to get a payment that doesn\'t exist")]
+        public virtual void ICanTryToGetAPaymentThatDoesntExist()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("I can try to get a payment that doesn\'t exist", null, ((string[])(null)));
+#line 20
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Id",
+                            "Status",
+                            "ProcessedDate",
+                            "CardNumber",
+                            "ExpiryDate",
+                            "Amount",
+                            "Currency",
+                            "CVV"});
+                table5.AddRow(new string[] {
+                            "1aa23b",
+                            "Unsuccessful",
+                            "10-Feb-2020 21:00",
+                            "12345678",
+                            "01-Aug-2020",
+                            "100.00",
+                            "GBP",
+                            "123"});
+                table5.AddRow(new string[] {
+                            "2bb34c",
+                            "Successful",
+                            "10-Feb-2020 21:30",
+                            "87354321",
+                            "31-Feb-2020",
+                            "2500.00",
+                            "EUR",
+                            "456"});
+                table5.AddRow(new string[] {
+                            "3cc45d",
+                            "Successful",
+                            "09-Feb-2020 05:45",
+                            "12341234",
+                            "31-Jan-2021",
+                            "1250.00",
+                            "USD",
+                            "789"});
+#line 21
+ testRunner.Given("I have the following payments stored", ((string)(null)), table5, "Given ");
 #line hidden
 #line 26
  testRunner.When("I get the payment with the id \'4dd56e\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -270,7 +270,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Status",
                             "ProcessedDate",
@@ -279,7 +279,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "Amount",
                             "Currency",
                             "CVV"});
-                table4.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "1aa23b",
                             "Unsuccessful",
                             "10-Feb-2020 21:00",
@@ -288,7 +288,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "100.00",
                             "GBP",
                             "123"});
-                table4.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "2bb34c",
                             "Successful",
                             "10-Feb-2020 21:30",
@@ -297,7 +297,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "2500.00",
                             "EUR",
                             "456"});
-                table4.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "3cc45d",
                             "Successful",
                             "09-Feb-2020 05:45",
@@ -307,12 +307,12 @@ this.ScenarioInitialize(scenarioInfo);
                             "USD",
                             "789"});
 #line 30
- testRunner.Given("I have the following payments stored", ((string)(null)), table4, "Given ");
+ testRunner.Given("I have the following payments stored", ((string)(null)), table6, "Given ");
 #line hidden
 #line 35
  testRunner.When("I get all payments", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Status",
                             "ProcessedDate",
@@ -321,35 +321,35 @@ this.ScenarioInitialize(scenarioInfo);
                             "Amount",
                             "Currency",
                             "CVV"});
-                table5.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "1aa23b",
                             "Unsuccessful",
                             "10-Feb-2020 21:00",
-                            "12345678",
+                            "****5678",
                             "01-Aug-2020",
                             "100.00",
                             "GBP",
                             "123"});
-                table5.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "2bb34c",
                             "Successful",
                             "10-Feb-2020 21:30",
-                            "87354321",
+                            "****4321",
                             "31-Feb-2020",
                             "2500.00",
                             "EUR",
                             "456"});
-                table5.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "3cc45d",
                             "Successful",
                             "09-Feb-2020 05:45",
-                            "12341234",
+                            "****1234",
                             "31-Jan-2021",
                             "1250.00",
                             "USD",
                             "789"});
 #line 36
- testRunner.Then("the payment view models with the following details are returned", ((string)(null)), table5, "Then ");
+ testRunner.Then("the payment view models with the following details are returned", ((string)(null)), table7, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

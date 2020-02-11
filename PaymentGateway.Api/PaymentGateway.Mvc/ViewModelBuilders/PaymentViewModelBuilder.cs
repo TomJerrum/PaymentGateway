@@ -13,7 +13,7 @@ namespace PaymentGateway.Mvc.ViewModelBuilders
             {
                 Id = payment.Id,
                 Amount = payment.Amount,
-                CardNumber = payment.CardNumber,
+                CardNumber = GenerateMaskedCardNumber(payment.CardNumber),
                 Currency = payment.Currency, 
                 CVV = payment.CVV,
                 ExpiryDate = payment.ExpiryDate,
@@ -25,6 +25,19 @@ namespace PaymentGateway.Mvc.ViewModelBuilders
         public List<PaymentViewModel> Build(List<Payment> payments)
         {
             return payments.Select(Build).ToList();
+        }
+
+        string GenerateMaskedCardNumber(string cardNumber)
+        {
+            var maskedCardNumber = "";
+
+            for (int x = 0; x < cardNumber.Length - 4; x++) 
+            {
+                maskedCardNumber += "*";
+            }
+
+            maskedCardNumber += cardNumber.Substring(cardNumber.Length - 4, 4);
+            return maskedCardNumber;
         }
     }
 }
