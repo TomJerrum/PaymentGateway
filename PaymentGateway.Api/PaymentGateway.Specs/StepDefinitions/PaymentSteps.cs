@@ -20,7 +20,6 @@ namespace PaymentGateway.Specs.StepDefinitions
     [Binding]
     public class PaymentSteps : Steps
     {
-        string returnedPaymentId;
         ActionResult returnedActionResult;
 
         readonly TestBankService bankService;
@@ -80,7 +79,7 @@ namespace PaymentGateway.Specs.StepDefinitions
                 ExpiryDate = paymentModelDto.ExpiryDate
             };
 
-            returnedPaymentId = await paymentController.Post(model);
+            returnedActionResult = await paymentController.Post(model);
         }
 
         [When(@"I get the payment with the id '(.*)'")]
@@ -98,7 +97,12 @@ namespace PaymentGateway.Specs.StepDefinitions
         [Then(@"the payment id '(.*)' is returned")]
         public void ThenThePaymentIdIsReturned(string expectedPaymentId)
         {
-            returnedPaymentId.Should().Be(expectedPaymentId);
+            returnedActionResult.Should().BeOfType<OkObjectResult>();
+
+            var actionResultValue = (returnedActionResult as OkObjectResult).Value;
+            actionResultValue.Should().BeOfType<string>();
+
+            (actionResultValue as string).Should().Be(expectedPaymentId);
         }
 
         [Then(@"the following payments are stored")]
@@ -154,6 +158,19 @@ namespace PaymentGateway.Specs.StepDefinitions
         public void ThenTheNotFoundHTTPStatusCodeIsReturned()
         {
             returnedActionResult.Should().BeOfType<NotFoundResult>();
+        }
+
+        [Then(@"the UnprocessableEntity HTTP status code is returned")]
+        public void ThenTheUnprocessableEntityHTTPStatusCodeIsReturned()
+        {
+            returnedActionResult.Should().BeOfType<UnprocessableEntityResult>();
+        }
+
+        [Then(@"there are no payments stored")]
+        public async Task ThenThereAreNoPaymentsStored()
+        {
+            var payments = await dataContext.Payments.ToListAsync();
+            payments.Should().BeNullOrEmpty();
         }
 
         void AssertPaymentViewModelIsCorrect(PaymentViewModel paymentViewModel, PaymentViewModelDto expectedPaymentViewModel)

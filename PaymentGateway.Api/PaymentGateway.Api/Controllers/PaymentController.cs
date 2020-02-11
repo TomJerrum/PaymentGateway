@@ -3,6 +3,7 @@ using PaymentGateway.CommandQuery.Command;
 using PaymentGateway.CommandQuery.Queries;
 using PaymentGateway.Mvc.Mappers;
 using PaymentGateway.Mvc.Models;
+using PaymentGateway.Mvc.Validator;
 using PaymentGateway.Mvc.ViewModelBuilders;
 using PaymentGateway.Services;
 using System.Linq;
@@ -38,12 +39,17 @@ namespace PaymentGateway.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<string> Post([FromBody]PaymentModel model)
+        public async Task<ActionResult> Post([FromBody]PaymentModel model)
         {
+            if (!model.IsValid())
+            {
+                return UnprocessableEntity();
+            }
+
             var bankResponse = bankService.SubmitPayment(model);
             var payment = paymentMapper.Map(model, bankResponse);
             await addEntityCommand.ExecuteAsync(payment);
-            return payment.Id;
+            return Ok(payment.Id);
         }
 
         [HttpGet("{id}")]

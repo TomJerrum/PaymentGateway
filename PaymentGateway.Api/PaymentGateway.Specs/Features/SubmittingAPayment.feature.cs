@@ -232,6 +232,63 @@ this.ScenarioInitialize(scenarioInfo);
             }
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("I can try to submit a payment with an invalid model")]
+        [NUnit.Framework.TestCaseAttribute("", "31-Dec-2022", "1000", "GBP", "123", null)]
+        [NUnit.Framework.TestCaseAttribute("12345678", "31-Dec-2019", "1000", "GBP", "123", null)]
+        [NUnit.Framework.TestCaseAttribute("12345678", "31-Dec-2022", "0", "GBP", "123", null)]
+        [NUnit.Framework.TestCaseAttribute("12345678", "31-Dec-2022", "-100", "GBP", "123", null)]
+        [NUnit.Framework.TestCaseAttribute("12345678", "31-Dec-2022", "1000", "", "123", null)]
+        [NUnit.Framework.TestCaseAttribute("12345678", "31-Dec-2022", "1000", "GBP", "", null)]
+        public virtual void ICanTryToSubmitAPaymentWithAnInvalidModel(string cardNumber, string expiryDate, string amount, string currency, string cVV, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("I can try to submit a payment with an invalid model", null, exampleTags);
+#line 27
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                            "CardNumber",
+                            "ExpiryDate",
+                            "Amount",
+                            "Currency",
+                            "CVV"});
+                table14.AddRow(new string[] {
+                            string.Format("{0}", cardNumber),
+                            string.Format("{0}", expiryDate),
+                            string.Format("{0}", amount),
+                            string.Format("{0}", currency),
+                            string.Format("{0}", cVV)});
+#line 28
+ testRunner.When("I submit the following payment", ((string)(null)), table14, "When ");
+#line hidden
+#line 31
+ testRunner.Then("the UnprocessableEntity HTTP status code is returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 32
+ testRunner.And("there are no payments stored", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
