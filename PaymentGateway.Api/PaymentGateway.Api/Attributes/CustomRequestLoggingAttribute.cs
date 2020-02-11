@@ -14,7 +14,7 @@ namespace PaymentGateway.Api.Attributes
                 Id = Guid.NewGuid().ToString(),
                 RequestMethod = context.HttpContext.Request.Method.ToString(),
                 RequestPath = context.HttpContext.Request.Path.ToString(),
-                ResponseStatusCode = context.Result.GetType().GetProperty("StatusCode").GetValue(context.Result).ToString(),
+                ResponseStatusCode = context.Result.GetType()?.GetProperty("StatusCode")?.GetValue(context.Result).ToString(),
                 TimeStamp = DateTime.Now
             };
 
